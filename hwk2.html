@@ -10,12 +10,23 @@
     $(".content h3").each(function(index, element) {
         var courseTitle = $(element).text();
         $(element).attr({"id": "course"+i});
-        $(".content nav ul").append("<li><a>"+courseTitle+"</a></li>").css({"list-style-type": "none"});
+        $(".content nav ul").append("<li><a>"+courseTitle+"</a></li>");
         $(".content nav li a:last").attr({"href": "#course"+i});
         i++;
         });
+    $("ul").css({"list-style-type": "none"});
     });
-    
+
+//  PROBLEM: Use jQuery to generate a list of links to the course titles inncluded in the page, similar to a table of contents nav
+//    - can't hard-code IDs or lists, all done via jQuery based on content... so someone could seamlessly add/remove courses
+// get the list of courses in 'content' class divs (who knows, another dept may add their courses)
+// 'i' at 1 to iterate for unique IDs
+// assign the unique ID with 'i' to the currently selected element (h3)
+// assign text content of current element to a variable...
+// append the unordered list, I placed in a nav element 'cuz I could, with the list item wrapped in an <a></a>
+// add a href atribute with the value of the current course's ID
+// iterate up and close the each loop
+// also removed unordered list decoration style
 
 </script>
 </head>
@@ -25,7 +36,7 @@
 
 <h1>Computer Networking and Information Technology</h1>
 
-<!-- via jQuery return an unorderd list of all h2 tags here each should link to their corresponding h2's content's section-->
+<!-- via jQuery return an unorderd list of all h2 tags here each should link to their corresponding h3's content's section-->
 <nav>
    <ul>
        
@@ -40,7 +51,7 @@
 <h3>CNIT 131</h3>
 <p>Internet and Beginning HTML –this is a semester-long course and you will learn about browsers, wired and wireless network, network security, etc. This course is part of the core courses required for AS Degree in CNIT.</p>
 
-<h3>CNIT 132:</h3>
+<h3>CNIT 132</h3>
 <p>Intermediate HTML &amp; CSS –this course contains intermediate techniques of HTML and CSS including principles of Responsive Web Design, CSS animation, etc.</p>
 
 <hr/>
