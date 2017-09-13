@@ -7,7 +7,7 @@
       
     $(document).ready(function(){
     var i = 1;
-    $(".content h3").each(function(index, element) {
+    $(".content h2").each(function(index, element) { //corrected, using h2
         var courseTitle = $(element).text();
         $(element).attr({"id": "course"+i});
         $(".content nav ul").append("<li><a>"+courseTitle+"</a></li>");
@@ -17,7 +17,7 @@
     $("ul").css({"list-style-type": "none"});
     });
 
-//  PROBLEM: Use jQuery to generate a list of links to the course titles inncluded in the page, similar to a table of contents nav
+//  PROBLEM: Use jQuery to generate a list of links to the course titles **CORRECTION, CERTIFICATES!!!** inncluded in the page, similar to a table of contents nav
 //    - can't hard-code IDs or lists, all done via jQuery based on content... so someone could seamlessly add/remove courses
 // get the list of courses in 'content' class divs (who knows, another dept may add their courses)
 // 'i' at 1 to iterate for unique IDs
