@@ -7,28 +7,21 @@
   </head>
   <body>
     <script>
-        // set easily accessible title and background color variables
         var pageTitle= "Working with D3";
         var pageBkgd= "rgba(0,0,255,0.3)"; // I chose other than cyan, hope that's okay!
-        // using v4.0, set category10() colors
-        var color = d3.scaleOrdinal(d3.schemeCategory10); // tricky color calling w/cat10
+        var color = d3.scaleOrdinal(d3.schemeCategory10);
         
-        // no need for a class imho, chose to just grab the body
         d3.select("body")
             .style("background-color", pageBkgd)
-        // add heading placeholder w/inline CSS
             .html("<h1 style='text-align:center;'></h1>")
-        // now drop in a title
             .select("h1")
             .text(pageTitle);
         
-        // now to our boxs and the data
         var data = [1, 2, 3, 4, 5, 6];
         var scale = d3.scaleLinear()
            .domain([1, 6])
            .range([10, 510]); //shifted, was getting border clipping on left-most rect
         
-        // our svg element's size
         var svg = d3.select("body").append("svg")
                 .attr("width", 600)
                 .attr("height", 250);
@@ -37,13 +30,10 @@
            .data(data)
            .enter().append("rect")
            .attr("x", function (d) { return scale(d); })
-        // use the data to return unique color values for each rect
            .style("fill", function(d) { return color(d); })
            .attr("y", 30)
            .attr("width", 40)
            .attr("height", 40)
-
-        // create a stroke for all and color it
            .style("stroke-width", 5)
            .style("stroke", "cyan");
     </script>
