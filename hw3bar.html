@@ -11,7 +11,9 @@
   <body>
     <h2>Students in CNIT 132</h2>
    <script>
-	  d3.json("files/hw3data.json", function (data) {
+	  "use strict";
+       (function render() {
+          d3.json("files/hw3data.json", function (data) {
          var canvas = d3.select("body")
                         .append("svg")
                           .attr("width", 1000)
@@ -34,7 +36,8 @@
 			   		return d.term + " w/ " + d.students + " students";})
                         )
                    .style("fill", "white");
-    });
+        })
+    })();
 	  
    </script>
   </body>
