@@ -18,13 +18,22 @@
                           .attr("height", 500);
                           
 
-          canvas.selectAll("rect").data(data).enter()
-			   .attr("width", function (d) { return d.students * 5; })
-			   .attr("height", 40) 
-               .style("fill", "blue")
-               .html("<h3>" + function (d) { return d.term} + " w/ " + function (d) { return d.students} + "</h3>");
+          canvas.selectAll("svg")
+                .data(data).enter()
+                .append("rect")
+			      .attr("width", function (d) { return d.students * 5; })
+			      .attr("height", 40)
+                  .attr("transform", function(d, i) { return "translate(0," + i * 45 +")"; })
+                  .style("fill", "blue");
           
-          canvas.selectAll("rect").style("fill", "blue");
+          canvas.selectAll("g")
+                .data(data).enter()
+                .append("text")
+                   .attr("transform", function(d, i) { return "translate(10," + (i * 45 +22) +")"; })
+                   .text((function(d) {
+			   		return d.term + " w/ " + d.students + " students";})
+                        )
+                   .style("fill", "white");
     });
 	  
    </script>
