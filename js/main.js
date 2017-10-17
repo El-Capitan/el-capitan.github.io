@@ -14,9 +14,10 @@ window.template = function(id) {
 // Person Model
 App.Models.Person = Backbone.Model.extend({
 	defaults: {
-		name: 'Guest User',
-		age: 30,
-		occupation: 'worker'
+		name: '',
+		age: '',
+		occupation: 'none',
+        gender: '-'
 	}
 });
 
@@ -63,9 +64,15 @@ App.Views.Person = Backbone.View.extend({
 	},
 	
 	editPerson: function(){
-		var newName = prompt("Please enter the new name", this.model.get('name'));
-		if (!newName) return;
+        var newName = prompt ("Please enter the new name", this.model.get('name'));
+        var newAge = prompt ("How 'bout an age?", this.model.get('age'));   
+        var newJob = prompt ("Your occupation?", this.model.get('occupation'));
+        var newGender = prompt ("Updated Gender?", this.model.get('gender'));
+
 		this.model.set('name', newName);
+        this.model.set('age', newAge);
+        this.model.set('occupation', newJob);
+        this.model.set('gender', newGender);
 	},
 	
 	DestroyPerson: function(){
@@ -82,7 +89,6 @@ App.Views.Person = Backbone.View.extend({
 	}
 });
 
-
 App.Views.AddPerson = Backbone.View.extend({
 	el: '#addPerson',
 
@@ -92,9 +98,25 @@ App.Views.AddPerson = Backbone.View.extend({
 
 	submit: function(e) {
 		e.preventDefault();
-		var newPersonName = $(e.currentTarget).find('input[type=text]').val();
+		var newPersonName = $(e.currentTarget).find('input[id=name]').val();
+        var newPersonAge= $(e.currentTarget).find('input[id=age]').val();
+        var newPersonJob= $(e.currentTarget).find('input[id=job]').val();
+        var newPersonGender= $(e.currentTarget).find('input[name=gender]:checked').val();
 		
-		var person = new App.Models.Person({ name: newPersonName });
+// Having some difficulty returning the icon for the appropriate gender w/o returning code as string
+    /*    var newPersonGenderIcon = '';
+        if (newPersonGender === "male") {
+            newPersonGenderIcon = "<i class='fa fa-mars' aria-hidden='true'></i>";
+            }
+        else if (newPersonGender === "female") {
+            newPersonGenderIcon = "<i class='fa fa-venus' aria-hidden='true'></i>";
+        }
+        else {
+            newPersonGenderIcon ='';
+        }
+    */
+        
+		var person = new App.Models.Person({ name: newPersonName, age: newPersonAge, occupation: newPersonJob, gender: newPersonGender }); //want to replace newPersonGender w/...GenderIcon
 		this.collection.add(person);
 
 	}
@@ -104,7 +126,8 @@ App.Views.AddPerson = Backbone.View.extend({
 var peopleCollection = new App.Collections.People([
 	{
 		name: 'Mohit Jain',
-		age: 26
+		age: 26,
+        gender: 'male'
 	},
 	{
 		name: 'Taroon Tyagi',
@@ -114,7 +137,7 @@ var peopleCollection = new App.Collections.People([
 	{
 		name: 'Rahul Narang',
 		age: 26,
-		occupation: 'Java Developer'
+		occupation: 'Java Developer',
 	}
 ]);
 var addPersonView = new App.Views.AddPerson({ collection: peopleCollection });

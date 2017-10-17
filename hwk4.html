@@ -3,22 +3,42 @@
 <head>
 	<meta charset="utf-8">
 	<title>Backbone Homework</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity = "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin = "anonymous">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<section>
+    <div class="col-xl-12">
+       <h2>My Sweet BackBone.js Contact List</h2> 
+    </div>
+</section>
+<section>
+<div class="col-xl-12">
 	<form id="addPerson" action="">
-			<input type="text" placeholder="Name of the person">
-			<input type="submit" value="Add Person">
+			<input type="text" id="name"placeholder="FirstName LastName">&nbsp;&nbsp;
+			<input type="text" id="age" placeholder="Age" size="4" >&nbsp;yrs.&nbsp;&nbsp;
+			<input type="text" id="job" placeholder="Occupation">&nbsp;&nbsp;
+             Gender:&nbsp;
+              <input type="radio" name="gender" value="female">&nbsp;<i class="fa fa-venus" aria-hidden="true"></i>&nbsp;&nbsp;
+              <input type="radio" name="gender" value="male">&nbsp;<i class="fa fa-mars" aria-hidden="true"></i>&nbsp;&nbsp;
+              <input type="radio" name="gender" value="-">&nbsp;declined &nbsp;&nbsp;&nbsp;
+        <button class="adduser" type="submit" alt="Add Person"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <hr />
 	</form>
-	
 <script id="personTemplate" type="text/template">
-	<span><strong><%= name %></strong> (<%= age %>) - <%= occupation %></span> 
-	<button class="edit">Edit</button>
-	<button class="delete">Delete</button>
+	<h5><span><%= name %>&nbsp;(<%= age %>&nbsp;yrs.)&nbsp;-&nbsp;occupation: &nbsp;<%= occupation %>,&nbsp;&nbsp;<%- gender %></span> 
+	<button class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true" alt="edit"></i></button>
+	<button class="delete"><i class="fa fa-minus" aria-hidden="true" alt="delete"></i></button></h5>
 </script>
+</div>
+</section>
 
 <script src="./js/underscore.js"></script>
 <script src="./js/jquery.js"></script>
 <script src="./js/backbone.js"></script>
+<script src="https://use.fontawesome.com/e64776415a.js"></script>
 <script src="./js/main.js"></script>
+
 </body>
 </html>

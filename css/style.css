@@ -1,2 +1,10 @@
-#name:focus, #age:focus, #occup:focus {background-color:yellow;}
-
+html { background: black; padding: 2em; }
+body {min-width: 670px; max-width: 900px; text-align: center; padding: .5em; margin: 0 auto; }
+input { line-height: 1em; }
+input:focus { background-color:rgb(250, 255, 189); }
+.adduser, .delete, .edit { float: right; }
+.adduser { margin-right: 1.5em; }
+.edit {margin-right: 1.2em; }
+h5 { line-height: 1.5em; position: inline; }
+ul { list-style-type: none; text-align: left; margin-left: 30%;  padding: 5px; }
+hr { margin-top: 1em; margin-bottom: 1em; }
