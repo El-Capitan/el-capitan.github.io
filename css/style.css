@@ -1,5 +1,6 @@
 html { background: black; padding: 2em; }
 body {min-width: 670px; max-width: 900px; text-align: center; padding: .5em; margin: 0 auto; }
+.placeholder {display: none;}
 input { line-height: 1em; }
 input:focus { background-color:rgb(250, 255, 189); }
 .adduser, .delete, .edit { float: right; }
