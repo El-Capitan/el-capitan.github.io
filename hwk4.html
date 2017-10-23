@@ -15,15 +15,15 @@
 </section>
 <section>
 <div class="col-xl-12">
-	<form id="addPerson" action="">
-			<input type="text" id="name"placeholder="FirstName LastName">&nbsp;&nbsp;
-			<input type="text" id="age" placeholder="Age" size="4" >&nbsp;yrs.&nbsp;&nbsp;
-			<input type="text" id="job" placeholder="Occupation">&nbsp;&nbsp;
+	<form id="addPerson">
+			<input type="text" id="name" placeholder="FirstName LastName" required>&nbsp;&nbsp;
+			<input type="number" id="age" placeholder="Age" min="1" max="100" required >&nbsp;yrs.&nbsp;&nbsp;
+			<input type="text" id="job" placeholder="Occupation" required>&nbsp;&nbsp;
              Gender:&nbsp;
               <input type="radio" name="gender" value="female">&nbsp;<i class="fa fa-venus" aria-hidden="true"></i>&nbsp;&nbsp;
               <input type="radio" name="gender" value="male">&nbsp;<i class="fa fa-mars" aria-hidden="true"></i>&nbsp;&nbsp;
               <input type="radio" name="gender" value="-">&nbsp;declined &nbsp;&nbsp;&nbsp;
-        <button class="adduser" type="submit" alt="Add Person"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <button class="adduser" type="submit"><i class="fa fa-plus" aria-hidden="true"></i></button>
         <hr />
 	</form>
 <script id="personTemplate" type="text/template">
