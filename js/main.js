@@ -118,6 +118,7 @@ App.Views.AddPerson = Backbone.View.extend({
         
 		var person = new App.Models.Person({ name: newPersonName, age: newPersonAge, occupation: newPersonJob, gender: newPersonGender }); //want to replace newPersonGender w/...GenderIcon
 		this.collection.add(person);
+        $('#addPerson')[0].reset();
 
 	}
 });
