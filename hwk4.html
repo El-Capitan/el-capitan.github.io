@@ -6,12 +6,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity = "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin = "anonymous">
         <link href="css/style.css" rel="stylesheet" type="text/css">
+        <script>
+            // added toltips for buttons
+            $(document).ready(function(){
+                $('[data-toggle="tooltip"]').tooltip(); 
+            });
+        </script>
 </head>
 <body>
-<section>
-    <div class="col-xl-12">
+<section class="col-xl-12">
        <h2>My Sweet BackBone.js Contact List</h2> 
-    </div>
 </section>
 <section>
 <div class="col-xl-12">
@@ -20,16 +24,16 @@
 			<input type="number" id="age" placeholder="Age" min="1" max="100" required >&nbsp;yrs.&nbsp;&nbsp;
 			<input type="text" id="job" placeholder="Occupation" required>&nbsp;&nbsp;
              Gender:&nbsp;
-              <input type="radio" name="gender" value="female">&nbsp;<i class="fa fa-venus" aria-hidden="true"></i>&nbsp;&nbsp;
-              <input type="radio" name="gender" value="male">&nbsp;<i class="fa fa-mars" aria-hidden="true"></i>&nbsp;&nbsp;
+              <input type="radio" name="gender" value="Female" data-toggle="tooltip" title="Female">&nbsp;<i class="fa fa-venus" aria-hidden="true"></i>&nbsp;&nbsp;
+              <input type="radio" name="gender" value="Male" data-toggle="tooltip" title="Male">&nbsp;<i class="fa fa-mars" aria-hidden="true"></i>&nbsp;&nbsp;
               <input type="radio" name="gender" value="-">&nbsp;declined &nbsp;&nbsp;&nbsp;
-        <button class="adduser" type="submit"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <button class="adduser" type="submit" data-toggle="tooltip" title="Add New Contact"><i class="fa fa-plus" aria-hidden="true"></i></button>
         <hr />
 	</form>
 <script id="personTemplate" type="text/template">
 	<h5><span><%= name %>&nbsp;(<%= age %>&nbsp;yrs.)&nbsp;-&nbsp;occupation: &nbsp;<%= occupation %>,&nbsp;&nbsp;<%- gender %></span> 
-	<button class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true" alt="edit"></i></button>
-	<button class="delete"><i class="fa fa-minus" aria-hidden="true" alt="delete"></i></button></h5>
+	<button class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="tooltip" title="Edit Contact"></i></button>
+	<button class="delete"><i class="fa fa-minus" aria-hidden="true" data-toggle="tooltip" title="Remove Contact"></i></button></h5>
 </script>
 </div>
 </section>
