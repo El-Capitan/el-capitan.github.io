@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+   <head>
+    <title>Toy Data</title>
+   </head>
+   <body>
+        <!-- rather than a list item I decided to drop divs into a responsive bootstrap row
+         -->
+        <div class="toya col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 center" ng-repeat="t in toydata | searchFor:searchTerm">
+            <a href="#"><img ng-src="{{t.img}}" /></a>
+            <a href="#" class="ng-binding" ng-click="$ctrl.showDesc = !$ctrl.showDesc" ><h3 class="title">{{t.title}}</h3></a>
+            <h4 class="price-each">{{t.price | currency}}</h4>
+            <div class="description" ng-show="$ctrl.showDesc" ng-class="ng-isolate-scope"><p><strong>Description</strong>: {{t.description}}</p>
+            <!-- <p class="description">{{t.description}}</p> -->
+            </div>
+        </div>
+       
+   </body>
+</html>   

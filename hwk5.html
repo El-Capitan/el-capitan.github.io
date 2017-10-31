@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="ABC Seminar list of events">
+		<meta name="viewport" content="width=device-width, initial-scale= 1">
+		<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity = "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin = "anonymous">
+		
+		<title>Patrick's Toystore</title>
+
+		<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:400,700" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/e64776415a.js"></script>
+		<link href="css/hwk5_style.css" rel="stylesheet" />
+	</head>
+
+	<body ng-app="toySearch" ng-controller="ToySearchController">
+        <div class="wrapper center">
+        <div class="row">
+		    <div class="bar input-group margin-bottom-sm">
+		    <span class="input-group-addon"><i class="fa fa-search fa-fw" aria-hidden="true"></i></span>
+			    <!-- Create a binding between the searchTerm model and the text field -->
+			    <input class="form-control" type="text" ng-model="searchTerm" placeholder="Type your search term" />
+            </div>
+		</div>
+
+		<div class="toyz row" ng-include="'toyview.html'"></div>
+    <footer>
+		<!-- Include AngularJS from Google's CDN -->
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+		<script src="js/angular_script.js"></script>
+    </footer>
+        </div>
+	</body>
+</html>
