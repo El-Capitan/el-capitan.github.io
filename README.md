@@ -1,5 +1,6 @@
 # el-capitan.github.io
 Website for school and general dev
+<p>Examples of using different libraries/frameworks to accomplish prescribed tasks.</p>
 
 <h2>CNIT 133a</h2>
 <h3>jQuery</h3>
