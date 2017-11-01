@@ -1,17 +1,22 @@
 <!doctype html>
 <html>
    <head>
-    <title>Toy Data</title>
+    <title>Individual Toy View</title>
    </head>
    <body>
-        <!-- rather than a list item I decided to drop divs into a responsive bootstrap row
-         -->
-        <div class="toya col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 center" ng-repeat="t in toydata | searchFor:searchTerm">
-            <a href="#"><img ng-src="{{t.img}}" /></a>
-            <a href="#" class="ng-binding" ng-click="$ctrl.showDesc = !$ctrl.showDesc" ><h3 class="title">{{t.title}}</h3></a>
-            <h4 class="price-each">{{t.price | currency}}</h4>
-            <div class="description" ng-show="$ctrl.showDesc" ng-class="ng-isolate-scope"><p><strong>Description</strong>: {{t.description}}</p>
-            <!-- <p class="description">{{t.description}}</p> -->
+        <!-- rather than a list items I decided to drop responsive divs into a Bootstrap row -->
+        <div class="toya col-xl-2 col-lg-3 col-md-4 col-sm-6 center" ng-repeat="t in toydata | searchFor:searchTerm">
+                <img class="ng-binding" ng-click="$ctrl.showBig = !ctrl.showBig" ng-src="{{t.img}}" title="{{t.title}}" height="80px" width="80px"/>
+                <a href="#" class="ng-binding" ng-click="$ctrl.showDesc = !$ctrl.showDesc" ><h3 class="title">{{t.title}}</h3></a>
+                <h4 class="price-each">{{t.price | currency}}</h4>
+
+        <!-- 'modal views' that overlays the item's div with 1- a zoomed image view or 2- a description view -->
+            <div class="description" ng-show="$ctrl.showBig" ng-class="ng-isolate-scope"><img ng-src="{{t.img}}" /><i class="ng-binding fa fa-times" ng-click="$ctrl.showBig = !$ctrl.showBig" aria-hidden="true"></i></div>
+            <div class="description" ng-show="$ctrl.showDesc" ng-class="ng-isolate-scope"><i class="ng-binding fa fa-times" ng-click="$ctrl.showDesc = !$ctrl.showDesc" aria-hidden="true"></i><h4><strong>{{t.title}}</strong></h4><p><strong>Description</strong>: {{t.description}}</p>
+            <ul>
+                <li><strong>In the box:</strong></li>
+                <li ng-repeat="i in t.parts">{{i}}</li>
+            </ul>
             </div>
         </div>
        

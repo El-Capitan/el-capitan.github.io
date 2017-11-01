@@ -7,7 +7,7 @@ body{
 	font:1.3em 'Open Sans', sans-serif;
 	color: #77737f;
 	text-align:center;
-    margin-top: -85px;
+    margin-top: -75px;
 }
 
 a, a:visited {
@@ -23,23 +23,49 @@ a:hover{
 }
 .toyz {
     margin: 10px 50px;
+    min-height: 468px;
 }
 .toya {
     margin: 12px auto;
+    padding-bottom: 12px;
+    min-height: 210px;
 }
 .title {
     text-transform: capitalize;
 }
-p {
+
+.description {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.88);
+    width: 100%;
+    min-height: 100%;
+    padding: .2rem;
+    padding-top: 17px;
+    left: 0;
+    text-align: center;
+}
+.description > p {
     margin: 0 auto;
     max-width: 30rem;
 }
-.description {
+.description > .fa-times {
     position: absolute;
-    top: 30%;
-    z-index: 10;
-    background: white;
-    width: 100%;
+    top: 6px;
+    right: 8px;
+    color: #5cb1d0;
+}
+.description > h4 {
+    margin-top: 2px;
+    text-transform: capitalize;
+}
+.description > ul {
+    list-style: none;
+}
+.description > img {
+    width: 50%;
+    height: auto;
 }
 .bar{
 	background-color:#4c8fad;
@@ -71,54 +97,15 @@ p {
 	text-indent: 10px;
 }
 
-ul{
-	list-style: none;
-	width: 75%;
-	margin: 0 auto;
-	text-align: left;
-}
-
-ul li{
-	border-bottom: 1px solid #ddd;
-	padding: 10px;
-	overflow: hidden;
-}
-
-ul li img{
-	width:60px;
-	height:60px;
-	float:left;
-	border:none;
-}
-
-ul li p.title{
-	margin-left: 75px;
-	font-weight: bold;
-	padding-top: 10px;
-	color:#6e7a7f;
-}
-
-ul li p.presenter {
-   margin-left: 75px;
-   font-style: italic;
-   padding-top: 10px;
-   color: #6e7a7f;
-}
-
-@media screen and (max-width: 480px) {
-ul li p.title {
-   font-size: 1rem;
-}
-ul li p.presenter {
-   font-size: 0.9rem;
-}
-}
-
-@media screen and (max-width: 480px) {
-ul li p.title {
-   font-size: 1.5rem;
-}
-ul li p.presenter {
-   font-size: 1.2rem;
-}
+footer {
+    background-color:#4c8fad;
+	background-image:-webkit-linear-gradient(top, #4c8fad, #42758b);
+	background-image:-moz-linear-gradient(top, #4c8fad, #42758b);
+	background-image:linear-gradient(top, #4c8fad, #42758b);
+	box-shadow: 0 1px 1px #ccc;
+    width: 100%;
+    color: white;
+    padding: 10px 50px;
+    margin-bottom: -10px;
+    float: bottom; 
 }
