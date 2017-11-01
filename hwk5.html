@@ -12,17 +12,17 @@
 		<script src="https://use.fontawesome.com/e64776415a.js"></script>
 	</head>
 
-	<body ng-app="toySearch" ng-controller="ToySearchController">
+	<body data-ng-app="toySearch" data-ng-controller="ToySearchController">
         <div class="wrapper center">
         <div class="row">
 		    <div class="bar input-group margin-bottom-sm">
 		    <span class="input-group-addon"><i class="fa fa-search fa-fw" aria-hidden="true"></i></span>
 			    <!-- Create a binding between the searchTerm model and the text field -->
-			    <input class="form-control" type="text" ng-model="searchTerm" placeholder="Type your search term" />
+			    <input class="form-control" type="text" data-ng-model="searchTerm" placeholder="Type your search term" />
             </div>
 		</div>
 
-		<div class="toyz row" ng-include="'toyview.html'"></div>
+		<div class="toyz row" data-ng-include="'toyview.html'"></div>
         </div>
         <footer class="center">
     <p><strong>Warning: </strong>Products featured here are undoubtedly much more awesome in real life.</p>
