@@ -55,7 +55,7 @@ a:hover{
 .description > .fa-times {
     position: absolute;
     top: 6px;
-    right: 8px;
+    right: 15px;
     color: #5cb1d0;
 }
 .description > h4 {

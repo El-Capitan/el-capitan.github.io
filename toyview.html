@@ -11,8 +11,8 @@
                 <h4 class="price-each">{{t.price | currency}}</h4>
 
         <!-- 'modal views' that overlays the item's div with 1- a zoomed image view or 2- a description view -->
-            <div class="description" ng-show="$ctrl.showBig" ng-class="ng-isolate-scope"><img ng-src="{{t.img}}" /><i class="ng-binding fa fa-times" ng-click="$ctrl.showBig = !$ctrl.showBig" aria-hidden="true"></i></div>
-            <div class="description" ng-show="$ctrl.showDesc" ng-class="ng-isolate-scope"><i class="ng-binding fa fa-times" ng-click="$ctrl.showDesc = !$ctrl.showDesc" aria-hidden="true"></i><h4><strong>{{t.title}}</strong></h4><p><strong>Description</strong>: {{t.description}}</p>
+            <div class="description" ng-show="$ctrl.showBig" ng-class="ng-isolate-scope"><img ng-src="{{t.img}}" /><i class="ng-binding fa fa-times fa-2x" ng-click="$ctrl.showBig = !$ctrl.showBig" aria-hidden="true"></i></div>
+            <div class="description" ng-show="$ctrl.showDesc" ng-class="ng-isolate-scope"><i class="ng-binding fa fa-times fa-lg" ng-click="$ctrl.showDesc = !$ctrl.showDesc" aria-hidden="true"></i><h4><strong>{{t.title}}</strong></h4><p><strong>Description</strong>: {{t.description}}</p>
             <ul>
                 <li><strong>In the box:</strong></li>
                 <li ng-repeat="i in t.parts">{{i}}</li>
