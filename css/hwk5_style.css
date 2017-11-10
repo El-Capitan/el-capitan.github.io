@@ -9,7 +9,7 @@ body{
 	text-align:center;
     margin-top: -10px;
 }
-#hero img {
+.hero img {
     max-width: 100%;
     height: auto;
 }
