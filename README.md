@@ -13,3 +13,5 @@ Website for school and general dev
 <p><a href="hwk4.html">Homework 4 Linked Here</a></p>
 <h3>Angular.js</h3>
 <p><a href="hwk5.html">Homework 5 Linked Here</a></p>
+<h3>Node.js</h3>
+<p><a href="./hwk6_node">Homework 6: NodeJS Servers &amp; fs. Fun!</a></p>
