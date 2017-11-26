@@ -1,6 +1,6 @@
 # el-capitan.github.io
 Homework #6: NodeJS
-<p>Node Servers and .fs Fun!</p>
+<p>Node Servers and fs. Fun!</p>
 
 <h2>Part 1: Simple html server</h2>
     <ol>
