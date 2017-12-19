@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- React -->
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+      <!-- <script src="https://fb.me/react-15.2.1.min.js"></script>
+      <script src="https://fb.me/react-dom-15.2.1.min.js"></script> -->
+	<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/6.1.19/browser.js"></script>  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js"></script>
+    <style>
+      #nameReturn {
+        display: none;
+      }
+    </style>
+        <title>Lab Check in</title>
+    </head>
+<body>
+   <div id="main"></div>
+<script type="text/babel">
+var App = React.createClass({
+  getInitialState: function() {
+    return {
+      myName: "Claudia"
+    };
+  },
+
+  handleNameChange: function (name) {
+    this.setState({ myName: name });
+  },
+
+  updateName: function () {
+ 
+  },
+
+  componentDidMount: function () {
+    this.updateName()
+  },
+ 
+  componentDidUpdate: function () { 
+    this.updateName()
+  },
+
+  render: function() {
+    return (
+      <div>
+        <h1>Lab Check in</h1>
+        <label>Choose a name &nbsp;&nbsp;&nbsp;
+          <NameSel value={this.state.myName} onNameChange={this.handleNameChange}/>
+        </label>
+        <p>Hello, {this.state.myName}, you have now checked in at <span id="dateReturn"></span></p>
+      </div>
+    )
+  }
+});
+
+// NameSel component
+var NameSel = React.createClass({
+  propTypes: {
+    value: React.PropTypes.string.isRequired,
+    onNameChange: React.PropTypes.func
+  },
+  
+  handleChange: function(e) {
+    e.preventDefault();
+    var name = e.target.value
+    if (this.props.onNameChange && name !== 'Stranger')
+      this.props.onNameChange(name);
+  },
+  
+  render: function() {
+    return (
+      <select value={this.props.value} onChange={this.handleChange}>
+	    <option value="Stranger">Select...</option>
+        <option value="Rosa">Rosa</option>
+        <option value="Deepak">Deepak</option>
+        <option value="Narg">Narg</option>
+        <option value="Aurora">Aurora</option>
+        <option value="Li-me">Li-me</option>
+        <option value="Olivia">Olivia</option>
+        <option value="Violet">Violet</option>
+        <option value="Royal">Royal</option>
+        <option value="Blanca">Blanca</option>
+        <option value="Pink">Pink</option>	
+      </select>
+    )
+  }
+});
+
+var Hi = React.createClass({
+  render: function() {
+
+    return (
+      <span>
+      {this.props.date.toTimeString()}
+      </span>
+    );
+  }
+});
+
+setInterval(function() {
+  ReactDOM.render(
+    <Hi date={new Date()} />,
+    document.getElementById('dateReturn')
+  );
+}, 500);
+
+
+ReactDOM.render(<App/>, document.querySelector('#main'));
+
+</script>
+</body>
+</html>

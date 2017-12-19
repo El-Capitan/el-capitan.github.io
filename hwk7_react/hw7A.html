@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js"></script>
+  <meta charset="utf-8">
+  <style>
+    div.event {
+      background: rgba(245,245,221,1.0);
+      border: 1px solid;
+      border-color: rgb(209, 105, 20) black;
+      padding: 12px;
+      word-wrap: break-word;
+      min-height: 150px;
+    }
+    .eventName {
+      font-size: 1.4em;
+      display: block;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    div.event:first-child {
+      border-top-color: black;
+    }
+    .eventPhoto {
+      float: right;
+      clear: both;
+      border: 1px solid black;
+      margin: 0;
+      padding: 0;
+    }
+    img {
+      min-height: 126px;
+    }
+    .eventPresenter {
+      font-style: oblique;
+      color: rgb(209, 105, 20);
+      display: block;
+      margin-bottom: 12px;
+    }
+    input {
+      display: block;
+      margin: 0 2px 5px 0;
+      width: 75px;
+      font-size: 1em;
+    }
+    form {
+      line-height: 1.5em;
+    }
+    #mynote {
+      margin-top: 0;
+      border: 1px solid black;
+      border-top-color: rgb(209, 105, 20);
+      padding: 5px;
+    }
+ </style>
+  <title>Event Listing</title>
+  <script type="text/babel">
+var EventListing = React.createClass({
+  /* This part below would normally come from a 
+  database in the server and then React would act as 
+  the View in the MVC structure of a real application
+  */
+  loadEventsFromServer: function() {
+    //For this example, the list of events is hard-coded here in JSON format
+    var events = [
+      {
+          "name": "Using React JS Flux",
+          "presenter": "Bob Smith - front-end web developer at Niagara, Inc.",
+          "photo": "images/bob.jpg",
+          "saves": 52,
+          "saved": false
+      },
+      {
+        "name": "React JS with Node JS",
+        "presenter": "Alexander Johanson - lead developer at Netflix",
+        "photo": "images/alex.jpg",
+        "saves": 123,
+        "saved": true
+      },
+      {
+        "name": "React JS Router",
+        "presenter": "Jennifer Simpson - manager at TeamCode, Inc.",
+        "photo": "images/jen.jpg",
+        "saves": 189,
+        "saved": false
+      },
+      {
+        "name": "React JS for Beginners",
+        "presenter": "Alicia Valdez - web developer and designer at Sonoma, Inc.",
+        "photo": "images/alicia.jpg",
+        "saves": 15,
+        "saved": true
+      },
+    ];
+    this.setState({events: events});
+  },
+  loadSavesFromServer: function() {
+    //Again, we hard-code for easy of learning - this would come from the server
+    var saves = [
+      {
+        "saves": 52,
+        "saved": false
+      },
+      {
+        "saves": 123,
+        "saved": true
+      },
+      {
+        "saves": 189,
+        "saved": false
+      },
+      {
+        "saves": 15,
+        "saved": true
+      }
+    ];
+    this.setState({saves: saves});
+  },
+  toggleSave: function(index) {
+    
+    var saves = this.state.saves;
+    
+  	if (saves[index].saved) {
+      saves[index].saves--;
+      saves[index].saved = false;
+		}
+		else {
+  		saves[index].saves++;
+      saves[index].saved = true;
+		}
+		this.setState({
+			saves: saves,
+		});
+    
+    //This is where we would save the information if this were part of a larger app
+    return saves[index].saved;
+ 
+	},
+	getInitialState: function(){
+ 
+		var saves = [];
+        var events = [];
+    
+		return {
+      saves: saves,
+      events: events
+    }
+	},
+  componentDidMount: function() {
+    this.loadEventsFromServer();
+    this.loadSavesFromServer();
+    //If we were updating the saves, we could continuously poll the server,
+    //and update the Saves information when something changes
+    //setInterval(this.loadSavesFromServer, this.props.pollInterval);
+  },
+  render: function() {
+    //We need to set these variables (including the toggleSave function)
+    //so they can be used within the map function below. Otherwise, they
+    //would be outside the function's scope
+    var saves = this.state.saves;
+    var toggleSave = this.toggleSave;
+    
+    var eventNodes = this.state.events.map(function(event, index) {
+      
+      if (typeof(saves[index]) == "undefined") {
+        saves[index] = {saves: 0};
+      }
+      //the key is React-specific, and is especially important when
+      //components can be shuffled or removed. it is NOT available
+      //as a prop, so we need a separate id for that.
+      return (
+        <Event
+          key={index}
+          id={index}
+          onToggleSave={toggleSave}
+          isSaved={saves[index].saved}
+          photo={event.photo}
+          name={event.name}
+          numSaves={saves[index].saves}
+        >
+          {event.presenter}
+        </Event>
+      );
+    });
+    return (
+      <div className="eventList">
+        {eventNodes}
+      </div>
+    );
+  }
+});
+ 
+var Event = React.createClass({
+  toggleSave: function(index){
+    //We have to do a second pass to the top level parent,
+    //since that is where the entire list resides.
+    return this.props.onToggleSave(index);
+  },
+  render: function() {
+    return (
+      <div className="event">
+        <Photo src={this.props.photo}></Photo>
+        <span className="eventName">
+          {this.props.name}
+        </span>
+       
+        <span className="eventPresenter">
+          {this.props.children}
+        </span>
+        <Saves
+          id={this.props.id}
+          handleSave={this.toggleSave}
+          isSaved={this.props.isSaved}
+          numSaves={this.props.numSaves}
+        ></Saves>
+      </div>
+    );
+  }
+});
+ 
+var Photo = React.createClass({
+  render: function() {
+    return (
+      <div className="eventPhoto">
+        <img src={this.props.src} />
+      </div>
+    );
+  }
+});
+ 
+var Saves = React.createClass({
+  handleSubmit: function(e) {
+    //We prevent the default action of submitting the form
+    //so we can stay on the page
+    e.preventDefault();
+    
+    //We have to pass this up to the parent
+    var isSaved = this.props.handleSave(this.props.id);
+  },
+  render: function() {
+    var savedText = '';
+    var submitText = 'Save';
+    if (this.props.isSaved) {
+      savedText = 'You are interested in attending this event.';
+      submitText = 'Remove';
+    }
+    
+    return (
+      <div className="saves">
+        <form onSubmit={this.handleSubmit}>
+          <input type="submit" value={submitText} />
+        </form>
+      {this.props.numSaves} saves. {savedText}
+      </div>
+    );
+  }
+});
+ 
+ReactDOM.render(
+  <EventListing url="events.json" savesUrl="saves.json" pollInterval={10000} />,
+  document.getElementById('content')
+);
+  </script>
+</head>
+
+<body>
+  <div id="content">
+  </div>
+  <div id="mynote">
+    <p>EventListening, Event, Photo, and Saves comprise the 4 ReactJS components that make up this page.</p>
+    <p>During the lesson I had a nagging thought about how to use jQuery with React when jQuery relies on manipulating the DOM and React uses a 'virtual'DOM.  
+  I had taken time away from finishing the exercises to research making our notes draggable using jQueryUI and as I thought about it I was afraid it was going 
+to become a headache to work in an integration. Immagine my chagrin when I returned to the lesson to find how incredibly easy it is! The part I appreciate most 
+from the experience is that I had a better context and understood the lesson so much better as a result!</p>
+<p>Okay ONE last thing!<br />
+Thank you for the final section that talks about breaking down a project in relationship to building the components.</p>
+  </div>
+</body>
+
+</html>
