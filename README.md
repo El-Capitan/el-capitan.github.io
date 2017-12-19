@@ -16,5 +16,5 @@ Website for school and general dev
 <h3>Node.js</h3>
 <p><a href="./hwk6_node">Homework 6: NodeJS Servers &amp; fs. Fun!</a></p>
 <h3>ReactJS</h3>
-<p><a href="./hwk7_react">Homework 7 pt 1: Lab Check in Page</a></p>
+<p><a href="./hwk7_react/chgcolor.html">Homework 7 pt 1: Lab Check in Page</a></p>
 <p><a href="./hwk7_react/hw7A.html">Homework 7 pt 2: Save/Remove Conferences</p>
